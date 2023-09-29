@@ -1,6 +1,6 @@
-name: Testes Automatizados
+name: Testes Automatizados  --> nome do arquivo 
 
-on: [push]
+on: [push] -- quando rodar -> rodar quando ? -> sempre que eu der um pull request (push)
 
 jobs:
   testes:
