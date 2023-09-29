@@ -1,0 +1,31 @@
+name: Testes Automatizados
+
+on: [push]
+
+jobs:
+  testes:
+    name: Testes TDD
+    runs-on: ubuntu-latest --> rodar numa maquina virtual ubuntu mais recente que vc tiver
+
+    steps:                  --> passos internos da maquina virtual 
+    - name: Checkout do código ---> nome que demos
+      uses: actions/checkout@v2 --framework pré feito que pega o codigo do git hub e joga na Maquina Virtual VM
+
+    - name: Configurar ambiente Python --> cofigurar o pyhton
+      uses: actions/setup-python@v2 --> versão dois do python 
+      with:
+        python-version: '3.x'
+
+    - name: Instalar dependências
+      run: pip install coverage pytest -- run : rodar no linux || use -> usar do linux
+
+    - name: Executar testes com Pytest
+      run: pytest  --> rodar com o pytest
+
+    - name: Run tests and measure coverage
+      run: coverage run -m pytest
+
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
